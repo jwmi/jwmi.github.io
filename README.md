@@ -1,2 +1,0 @@
-# jwmi.github.io
-Notebook
