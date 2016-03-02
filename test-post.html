@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="canonical" href="/test-post.html" />
 
-    <title>  Miller's notebook &mdash; Test post
+    <title>  Miller's notebook &mdash; Test post with a longer title that is more descriptive
 </title>
 
 
@@ -48,7 +48,7 @@
 </header> <!-- /.header -->  <div class="container">
   <div class="post full-post">
     <h1 class="post-title">
-      <a href="/test-post.html" title="Permalink to Test post">Test post</a>
+      <a href="/test-post.html" title="Permalink to Test post with a longer title that is more descriptive">Test post with a longer title that is more descriptive</a>
     </h1>
     <ul class="list-inline">
       <li class="post-date">
@@ -56,7 +56,7 @@
       </li>
       <li class="muted">&middot;</li>
       <li class="post-category">
-        <a href="/category/general.html">General</a>
+        <a href="/category/misc.html">misc</a>
       </li>
     </ul>
     <div class="post-content">
@@ -123,9 +123,37 @@ Let's add some math: <span class="math">\(x = \sqrt{2}\)</span>,</p>
 </script>
     </div>
     <hr class="separator">
-    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
-    You may cite this as:
-    "Jeffrey W. Miller, <i>Test post</i>, Lab Notebook, 2016-02-28."
+    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+
+    Cite/attribute as:
+    "Jeffrey W. Miller. Test post with a longer title that is more descriptive. <i>Miller's notebook</i>, February 28, 2016."
+
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+   //var e = document.getElementById(id);
+   //e.style.display = 'none';
+//-->
+</script>
+<button onclick="toggle_visibility('bibtex');" style="font-size: 80%">bibtex</button>
+<div id="bibtex" style="display: none">
+<textarea rows="8" cols="70">
+@article{miller2016,
+    author = {Jeffrey W. Miller},
+    title = {Test post with a longer title that is more descriptive},
+    journal = {Miller's notebook},
+    type = {Lab notebook},
+    volume = {February 28},
+    year = {2016}
+}
+</textarea>
+</div>
 
   </div>
   <hr class="separator">
