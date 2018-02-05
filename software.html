@@ -50,6 +50,17 @@ You can find my GitHub page <a href="https://github.com/jwmi/">here</a>.
 </p>
 <div style="height: 25px"></div>
 
+<div class = "section_head"><a name="exact">GammaShape</a></div>
+<p>
+<a href="software/GammaShape.jl">GammaShape.jl</a> provides a fast algorithm for approximating the full conditional distribution of the shape parameter of a gamma distribution.  See the article for details:
+<p>
+<span class="title">Fast and accurate approximation of the full conditional for gamma shape parameters,</span>
+J. W. Miller, 2018. 
+(<a href="publications/gamma_shape_approximation.pdf">pdf</a>) 
+</p>
+</p>
+
+
 <div class = "section_head"><a name="exact">BayesianMixtures</a></div>
 <p>
 <a href="https://github.com/jwmi/BayesianMixtures.jl">BayesianMixtures</a> is a Julia package for nonparametric Bayesian mixture models and Bayesian clustering. The following model types are currently implemented:
@@ -63,7 +74,15 @@ The following component distributions are currently implemented:
 <li> multivariate normal with diagonal covariance matrix, and
 <li> multivariate normal (with unconstrained covariance matrix).
 </ul>
-For all models, inference is performed using the Jain-Neal split-merge samplers.  For MFMs, this is done using the results of Miller and Harrison (2015).
+For all models, inference is performed using the Jain-Neal split-merge samplers.  For MFMs, this is done using the results from our article:
+<p>
+<span class="title">Mixture models with a prior on the number of components,</span>
+J. W. Miller and M. T. Harrison, 
+<span class="place">Journal of the American Statistical Association (JASA)</span>, Vol. 0, 2017, pp. 1-17.
+(<a href="http://www.tandfonline.com/doi/abs/10.1080/01621459.2016.1255636">pub</a>)
+(<a href="publications/MFM.pdf">pdf</a>)
+(<a href="http://arxiv.org/abs/1502.06241">arXiv</a>)
+</p>
 </p>
 <p>
 <a href="https://github.com/jwmi/BayesianMixtures.jl">Click here</a> for more information and for downloading.
