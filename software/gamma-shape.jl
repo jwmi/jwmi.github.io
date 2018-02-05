@@ -1,7 +1,7 @@
 # Julia code for the article:
 #     Fast and accurate approximation of the full conditional for gamma shape parameters. Jeffrey W. Miller, 2018.
 #
-# Please cite the article if you use this algorithm.
+# Please cite the article if you use this algorithm.  See the end of this file for license info.
 # 
 # ___ Julia language ___
 # This source code is written in the Julia language (https://julialang.org/).  The code was implemented using Julia v0.6.0, so if you use a different version of Julia then tweaks might be needed.  Only the SpecialFunctions package is needed for the algorithm itself, but to make the plots, the following Julia packages are also required: Distributions, PyPlot. These packages can be installed at the Julia command line by running:
@@ -229,21 +229,22 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 nothing
 
+
+
+# __________________________________________________________________________________________________
+# LICENSE
+
+# gamma-shape.jl is licensed under the MIT "Expat" License:
+# 
+# Copyright (c) 2018: Jeffrey W. Miller.
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
