@@ -12,8 +12,8 @@
 #    Pkg.add("PyPlot")
 #    using PyPlot
 #
-# To execute a given Julia file, say GammaShape.jl, cd to the appropriate folder, e.g., cd("../folder"), and do:
-#    include("GammaShape.jl")
+# To execute a given Julia file, say Gshape.jl, cd to the appropriate folder, e.g., cd("../folder"), and do:
+#    include("Gshape.jl")
 
 
 # __________________________________________________________________________________________________
