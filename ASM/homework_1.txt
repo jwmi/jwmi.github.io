@@ -1,0 +1,23 @@
+BDA chapter 4, exercises 1, 4, 9, 13, 15.
+
+Additional instructions and hints:
+
+Exercise 4 - Your justification should include (a) mathematical expressions for the asymptotic posterior mean and variance of phi as a function of the asymptotic posterior mean and variance of theta, when theta is one-dimensional, (b) a drawing illustrating why these expressions make sense, intuitively, and (c) a brief verbal description explaining your drawing in relation to the mathematical expressions.
+
+Exercise 9 - Show this empirically (you don't have to prove it). Hint: the formula for the mean of a truncated normal distribution will be useful.
+
+Exercise 15 - For parts b and c, use the central (i.e., equal-tailed) posterior credible interval. For part b, give the exact numerical quantity. For part c, also plot of the coverage of the frequentist confidence interval (based on the standard formula) and explain any differences between this and the coverage of the posterior interval.
+
+
+Submission instructions:
+
+Submit your assignment both electronically AND in hard copy at class the same day. (This is a change from what was in the syllabus.) Not submitting a hard copy will result in a 3 point penalty. If you don't turn in a hard copy at class time, then you can only submit electronically.
+
+Name your PDF file using the following convention: STA531_HW#_lastname_netID.pdf, for example, STA531_HW1_Miller_jwm40.pdf.
+
+Include your name and NetID on the hard copy you turn in at class.
+
+Put all code at the end of your submission.
+
+
+

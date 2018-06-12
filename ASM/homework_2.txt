@@ -1,0 +1,18 @@
+1. Attached (airline.txt) is a more complete data set of airline fatalities, from 1970 to 2008.  Using this data, apply both LOO-CV and 5-fold CV to estimate the predictive performance of each of the two models of the number of passenger deaths from Exercise 2 of BDA chapter 6, as well as your improved model from Exercise 3. Use the (negative) log posterior predictive density as the loss function.
+
+2. Suppose you use cross-validation to choose a model m* from a collection of models m=1,...,M, by picking the one with the best estimated predictive performance. In class, I said that if you then want to report an estimate of the predictive performance of this "best" model m*, you need to evaluate it on a separate test data set (disjoint from the data used for cross-validation). 
+(a) Explain this more fully. In particular, why should this be better than the estimate of the predictive performance of m* that was used to select the model?
+(b) Come up with a simulation example and illustrate this empirically, to support your explanation in part (a).
+
+3. In BDA chapter 8, we are considering the data collection process, and studying situations in which it does or does not need to be accounted for in the model. Consider the airline fatality data again.
+(a) Describe two or more hypothetical issues with the data collection process that could significantly affect your inferences, if these issues were present. (Note: These issues do not have to actually be present in this data, but they should be plausible.) 
+(b) Look into the source of this data, and how the data was collected, in order to try to determine whether your hypothetical issues are actual issues or not. This will require some digging and critical thinking.
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+
+Background:
+Hidden Markov models are often used for speech recognition.  In such applications, the sequence of hidden states z_1,...,z_n is a sequence of phonemes (discrete units of verbal sound, see https://en.wikipedia.org/wiki/Phoneme).  The observations x_1,...,x_n are recorded sounds that are represented in terms of summary features; Mel-frequency cepstral coefficients (MFCCs), which are related to Fourier coefficients, are a common choice of features for speech recognition.  Each observation x_t is then a vector of features corresponding to the sound recorded at time interval t.  Note that this assumes the audio signal has already been parsed into time intervals 1,...,n corresponding to the phonemes.
+
+In this exercise, we will consider a simplified version of the hidden Markov models used for speech recognition.  We will assume that there are only 10 types of phoneme and that the observations x_t are 5-dimensional and normally distributed, and we will use a first-order Markov model rather than a higher-order Markov model.  (Also, just to clarify, all of the parameters in this exercise are purely simulated, and shouldn't be interpreted as representing real speech recognition parameters.)
+
+
+Setup:
+The hidden values z_t belong to the set {1,...,m}, where m = 10.  Each observation x_t is a 5-dimensional vector, x_t = (x_{t1},...,x_{t5}).  There are n = 1000 observations, x_1,...,x_n, in the file "x.txt".  The parameters of the model are all given below.
+
+
+Exercise:
+1. Implement the Viterbi algorithm and compute the sequence z*_1,...,z*_n that maximizes the posterior probability p(z_1,...,z_n | x_1,...,x_n).
+
+2. The file "z_true.txt" contains the sequence of z's that I used to generate these x's.  Evaluate the accuracy of your z* sequence by measuring what fraction of z's you got right.  Compare this with the accuracy of the sequence z** obtained by following simpler approach: for each t separately, define z**_t to be the value maximizing p(x_t | z_t).
+
+3. Plot the true z_t along with z*_t and z**_t, for t = 1,...,100 (only display the first 100 values), and indicate where they differ.
+
+
+Initial distribution:
+    pi[s] = p(Z_1=s)
+
+pi = 
+.11	.01	.31	.09	.17	.16	.04	.05	.01	.05
+
+Transition matrix:
+    T[r,s] = p(Z_t=s | Z_{t-1}=r) = transition probability of r->s
+
+T = 
+.09	0	.01	0	0	.01	.45	.07	0	.37
+0	.04	0	.51	.19	.03	.02	0	.02	.19
+0	.06	.02	.5	.01	0	0	.23	.09	.09
+0	.22	.65	.06	0	.02	0	0	.01	.04
+0	.72	0	0	0	.06	.14	.02	.02	.04
+0	.43	.14	0	.01	0	.15	.17	0	.1
+.32	0	.14	.01	.23	.14	.02	0	.11	.03
+.3	0	.36	.04	.05	.17	0	0	0	.08
+0	0	.51	.02	.11	.05	.07	.16	.03	.05
+.3	0	0	.12	.02	.01	.01	0	.33	.21
+
+
+Emission distributions:
+    X_{tj} | Z_t=s ~ Normal(mu[s,j], sigma[s,j]^2), independently for j = 1,...,5, where mu and sigma are below.
+
+mu = 
+1.19	2.33	-6.92	-.66	-5.16
+1.53	3.85	3.18	-8.46	-1.34
+-2.39	1.84	2.68	-.27	.28
+-.04	-2.09	2.2	4.89	1.37
+-3.36	1.63	-.25	2.27	6.94
+1.24	-.2	5.35	3.05	5.2
+9.18	-2.77	-.29	1.51	.83
+-9.07	-7.1	-2.98	-2.58	-4.04
+2.12	.48	-4.88	-2.66	-3.4
+1.73	-3.03	-.21	-7.21	4.52
+
+sigma = 
+2.68	2.91	1.2	4.65	1.66
+1.15	1.9	1.22	.91	1.18
+.72	1.6	.98	2.06	1.78
+1.64	1.95	1.8	5.25	2.57
+2.86	2.43	2.42	4.3	3.25
+1.46	11.77	4.34	1.46	8.68
+2.61	1.18	2.29	1.05	1.56
+2.53	10.38	1.81	1.51	1.9
+1.86	2.35	1.4	2.32	2.73
+1.42	2.23	1.13	1.38	3.22
+

@@ -1,0 +1,40 @@
+
+Background:
+Markov models and hidden Markov models are often used for modeling written text. A common way of modeling text is to consider each word to be a single observation x_t (perhaps with some preprocessing to appropriately handle punctuation, etc.). In an HMM, the hidden states z_t represent abstract concepts or word types, and they may or may not have a clear interpretation. More complex models are also frequently used to model text, especially higher-order Markov chains and probabilistic context-free grammars (PCFGs).
+
+In this exercise, you will apply a hidden Markov model to a short sample of text resembling stories from a children's book. You will use the Baum-Welch algorithm to estimate the parameters. Using a short sample of text involving a limited vocabulary and relatively simple grammar makes the problem easier. (With a larger sample of text, larger vocabulary, and more complex grammar, a more sophisticated approach would probably be needed.)
+
+
+Data:
+The file "x-words.txt" contains a sequence of integers x_1,...,x_n, where x_t represents the t'th word/symbol in the sample of text.  The file "code-words.txt" contains the mapping from integers to words/symbols. (You will not need code-words.txt until part 3 of this assignment.)
+
+
+Setup:
+The hidden values z_t belong to the set {1,...,m}, for some value of m that we will choose below.  Each observation x_t is an integer in {1,...,k} where k=59, since there are 59 distinct words/symbols occurring in the text.  There are n=292 observations, x_1,...,x_n (the text is 292 words/symbols long). For each state i=1,...,m, we model the emission distribution p(x_t | z_t=i) as an arbitrary probability vector phi_i = (phi_i1,...,phi_ik) summing to 1.
+
+
+Exercises:
+1. Implement the forward algorithm and backward algorithm. As a sanity check, compute the value of log(p(x_1,...,x_n)) using the forward algorithm, assuming that the parameters are:
+	m = 10
+	pi_i = 1/m for all i=1,...,m.
+	T_ij = 1/m for all i=1,...,m and j=1,...,m.
+	phi_iw = 1/k for all i=1,...,m and w=1,...,k.
+Report the value you get.  These parameter values are simple enough that you can analytically calculate log(p(x_1,...,x_n)) to check your answer.
+
+2. Implement the Baum-Welch algorithm. For the convergence criterion, stop when the change in log(p(x_1,...,x_n)) from one iteration to the next is less than 0.01. Run the algorithm on the data in x-words.txt, with the following settings:
+a) m = 10
+b) m = 30
+c) m = 100
+For each m, run the algorithm 3 times with different randomly chosen initializations of the parameters (so, you will be doing 9 runs altogether). For each run, report the number of iterations until "convergence" and report the value of log(p(x_1,...,x_n)) at the last iteration.
+
+3. Implement a function that takes the HMM parameters, generates a random sequence of hidden states z_1,...,z_n and observations x_1,...,x_n, and (using code-words.txt) prints out the sequence of words/symbols corresponding to x_1,...,x_n in a nicely-formatted way.  For each m = 10, 30, and 100, run your implementation of the Baum-Welch algorithm to estimate the parameters, generate a random sequence x_1,...,x_N with N=250, and print out the corresponding sequence of words/symbols. Discuss the differences you observe between the generated text for m = 10, 30, and 100. 
+
+
+Notes:
+- In the M-step for phi_i, you will need to use Lagrange multipliers to analytically compute the maximum.
+- For reference, my implementation takes about one second when m = 10, three or four seconds when m = 30, and roughly 30-40 seconds when m = 100.
+
+
+
+
+
