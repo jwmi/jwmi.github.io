@@ -4,7 +4,7 @@
 # Please cite the article if you use this algorithm.  See the end of this file for license info.
 # 
 # ___ Julia language ___
-# This source code is written in the Julia language (https://julialang.org/).  The code was implemented using Julia v0.6.2, so if you use a different version of Julia then tweaks might be needed.  Only the SpecialFunctions package is needed for the algorithm itself, but to make the plots, the following Julia packages are also required: Distributions, PyPlot. These packages can be installed at the Julia command line by running:
+# This source code is written in the Julia language (https://julialang.org/).  The code was implemented using Julia v0.6.0, so if you use a different version of Julia then tweaks might be needed.  Only the SpecialFunctions package is needed for the algorithm itself, but to make the plots, the following Julia packages are also required: Distributions, PyPlot. These packages can be installed at the Julia command line by running:
 #    Pkg.add("SpecialFunctions")
 #    Pkg.add("Distributions")
 #    ENV["PYTHON"]=""
@@ -55,7 +55,7 @@ using Distributions
 # Compare the true and approximate full conditionals by computing total variation and KL using numerical integration.
 function compare(x,m,A,B,a0,b0,N)
     u = ((1:N)-0.5)/N  # uniform grid
-    a = quantile.(Gamma(A,1/B),u)  # quantiles of approximate full conditional (Note: Julia uses Gamma(shape,scale).)
+    a = quantile(Gamma(A,1/B),u)  # quantiles of approximate full conditional (Note: Julia uses Gamma(shape,scale).)
     f_approx = pdf.(Gamma(A,1/B),a)  # density of the approximate full conditional at the quantiles
     n,S,R = length(x),sum(x),sum(log.(x+eps(0.)))  # sufficient statistics
     loglik = n*a.*log.(a/m) - n*lgamma.(a) + (a-1)*R - (a/m)*S  # log p(x|a,m)
@@ -81,6 +81,7 @@ end
 # Code to generate the CDFs figure in the article
 
 using PyPlot
+drawnow() = (pause(0.001); get_current_fig_manager()[:window][:raise_]())
 latex(s) = latexstring(replace(s," ","\\,\\,"))
 
 # Settings
@@ -114,7 +115,7 @@ for a0 in a0s
         ylabel(L"\mathrm{CDF}(a|\mu,x_{1\!:\!n})",fontsize=14)
         ylim(0,1)
         legend(loc="lower right",fontsize=14)
-        show()
+        drawnow()
         savefig("cdf-a0=$a0-m0=$m0-n=$n-ratio=$ratio-a=$a_true-m=$m_true.png",dpi=150)
         close()
 
@@ -196,7 +197,7 @@ for (distances,dname) in [(d_TVs,"d_TV"),(d_KL1s,"d_KL1"),(d_KL2s,"d_KL2")]
                 yticks(0:nas-1,round.(Int,log10.(a_trues)),fontsize=12)
                 xticks(0:nms-1,round.(Int,log10.(m_trues)),fontsize=12)
                 colorbar()
-                show()
+                drawnow()
                 savefig("$dname-a0=$a0-n=$n-ratio=$ratio.png",dpi=150)
                 close()
             end
@@ -206,22 +207,22 @@ end
 
 # Plot worst-case distances
 for (distances,dname,dstr) in [(d_TVs,"d_TV",L"d_\mathrm{TV}(f,g)"),(d_KL1s,"d_KL1",L"d_\mathrm{KL}(g,f)"),(d_KL2s,"d_KL2",L"d_\mathrm{KL}(f,g)")]
-    figure(1, figsize=(4,3.2)); clf()
-    subplots_adjust(bottom=0.2,left=0.2)
+    figure(1, figsize=(5.5,3.2)); clf()
+    subplots_adjust(bottom=0.2)
     title(dstr,fontsize=16)
     mark = ["o","^","s"]
     for (i_a0,a0) in enumerate(a0s)
         D = squeeze(mean(distances[i_a0,:,:,:,:,:],5),5)
         d_max = maximum(D,[2,3,4])[:]
-        loglog(n_values,d_max,mark[i_a0]*"-",lw=2,label=latex("a_0=$a0"))
+        loglog(n_values,d_max,mark[i_a0]*"-",lw=2,label=latex("a_0 = $a0"))
     end
-    legend(loc="upper right",fontsize=14,borderaxespad=0.3)
+    legend(loc="upper right",fontsize=14)
     ylabel("max discrepancy",fontsize=14)
     xlabel(L"n",fontsize=14)
     yl = ylim()
     # yticks(0:.01:.1)
     ylim(yl[1],0.1)
-    show()
+    drawnow()
     savefig("worst-case-$dname.png",dpi=150)
     close()
 end
@@ -235,7 +236,7 @@ nothing
 # __________________________________________________________________________________________________
 # LICENSE
 
-# Gshape.jl is licensed under the MIT "Expat" License:
+# gamma-shape.jl is licensed under the MIT "Expat" License:
 # 
 # Copyright (c) 2018: Jeffrey W. Miller.
 # 
